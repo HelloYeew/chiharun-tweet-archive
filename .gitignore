@@ -123,3 +123,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.idea
+try.py
+main
+.DS_Store
+chiharun_tweet_json
+chiharun_tweet_media
+chiharun_tweet.txt
