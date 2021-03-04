@@ -78,8 +78,11 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@c_hokaze227', tweet
     json_str = json.dumps(status._json, ensure_ascii=False, indent=4)
     print("Put tweet as JSON...")
     with open(f'chiharun_tweet_json/chiharun_tweet_{tweet_number}.json', 'a') as filehandle:
-        filehandle.writelines(f"\n{json_str}")
+        filehandle.writelines(json_str)
     print(f"Write Tweet #{tweet_number} complete in {os.getcwd()}/chiharun_tweet_json/chiharun_tweet_{tweet_number}.json")
+    with open('chiharun_tweet_one_file.json', 'a') as filehandle:
+        filehandle.writelines(f"{json_str},\n")
+    print(f"Write Tweet #{tweet_number} complete in {os.getcwd()}/chiharun_tweet_one_file.json")
     print()
     print(f"Tweet #{tweet_number} import complete!")
     tweet_number += 1
