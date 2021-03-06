@@ -43,5 +43,5 @@ I will put all of this file in release page (or in other place) because I know y
 
 You don't want to contribute these repositories anymore. Just use all file that I get from her tweets to contribute in other way like make website that archive these tweets etc.
 
-If you use my data please credit to these repositories. Thx!
+If you use my data please credit or mention this repositories. Thx!
 
