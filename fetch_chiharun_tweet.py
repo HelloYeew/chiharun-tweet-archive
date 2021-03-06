@@ -4,8 +4,13 @@ import os
 import urllib.request
 
 # Warning! Very dirty code
-# This code can update latest tweet from user up to 3250 tweet due to limitation on Twitter API (If you want to fetch more than
-# 3250 tweet you must let account owner accept your API)
+#
+# This code can update latest tweet from user up to 3250 tweet due to limitation on Twitter
+# API (If you want to fetch more than 3250 tweet you must let account owner accept your API)
+
+# Due to a problem about tweepy, I can print a video detail in tweet but cannot use it to do like download or do
+# something because an Attribute error has occurred when I use extended_entities to do more than just print (Cannot
+# convert to string to) but it have video information in JSON so it's just a link (Sad).
 
 # Consumer keys and access tokens, used for OAuth
 CONSUMER_KEY = ''
@@ -30,6 +35,7 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@c_hokaze227', tweet
     tweet_user_mentions = status.entities["user_mentions"]
     tweet_url_in_tweet = status.entities["urls"]
     media_text = ""
+    video_text = ""
     media_number = 1
     try :
         for media in status.entities["media"]:
@@ -43,10 +49,6 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@c_hokaze227', tweet
                 urllib.request.urlretrieve(tweet_media_url, f"{os.getcwd()}/chiharun_tweet_media/{tweet_number}_{media_number}.jpeg")
             elif "png" in tweet_media_url:
                 urllib.request.urlretrieve(tweet_media_url, f"{os.getcwd()}/chiharun_tweet_media/{tweet_number}_{media_number}.png")
-            elif "mp4" in tweet_media_url:
-                urllib.request.urlretrieve(tweet_media_url, f"{os.getcwd()}/chiharun_tweet_media/{tweet_number}_{media_number}.mp4")
-            elif "wmv" in tweet_media_url:
-                urllib.request.urlretrieve(tweet_media_url, f"{os.getcwd()}/chiharun_tweet_media/{tweet_number}_{media_number}.wmv")
             elif "gif" in tweet_media_url:
                 urllib.request.urlretrieve(tweet_media_url, f"{os.getcwd()}/chiharun_tweet_media/{tweet_number}_{media_number}.gif")
             media_text += f"URL : {tweet_media_url}\n"
@@ -86,5 +88,7 @@ for status in tweepy.Cursor(api.user_timeline, screen_name='@c_hokaze227', tweet
     print()
     print(f"Tweet #{tweet_number} import complete!")
     tweet_number += 1
+
+print("Complete!")
 
 

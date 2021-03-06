@@ -130,5 +130,7 @@ main
 .DS_Store
 chiharun_tweet_json
 chiharun_tweet_media
-chiharun_tweet.txt
+chiharun_tweet_text.txt
+chiharun_user_data.json
+chiharun_tweet_one_file.json
 token.txt
